@@ -7079,39 +7079,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 467730679003679238, guid: a6ddc6e6151517447ad925671d15420c,
-        type: 3}
-      propertyPath: m_ObjectPrefabs.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 467730679003679238, guid: a6ddc6e6151517447ad925671d15420c,
-        type: 3}
-      propertyPath: m_ObjectPrefabs.Array.data[0]
-      value: 
-      objectReference: {fileID: 5459772783300905913, guid: 997a578e95753024bab6f621237924fa,
-        type: 3}
-    - target: {fileID: 467730679003679238, guid: a6ddc6e6151517447ad925671d15420c,
-        type: 3}
-      propertyPath: m_ObjectPrefabs.Array.data[1]
-      value: 
-      objectReference: {fileID: 3915449319049289338, guid: 16eab820ada3b7c4c95e7f40095f1fab,
-        type: 3}
-    - target: {fileID: 467730679003679238, guid: a6ddc6e6151517447ad925671d15420c,
-        type: 3}
-      propertyPath: m_ObjectPrefabs.Array.data[2]
-      value: 
-      objectReference: {fileID: 7771799493161504826, guid: 27bcdd5d3d805a7489dc1520536a545c,
-        type: 3}
     - target: {fileID: 1376557699041479312, guid: a6ddc6e6151517447ad925671d15420c,
         type: 3}
       propertyPath: m_Name
       value: ShowRoom_ObjectSpawner
       objectReference: {fileID: 0}
-    - target: {fileID: 2246378828977783857, guid: a6ddc6e6151517447ad925671d15420c,
-        type: 3}
-      propertyPath: m_ARInteractorObject
-      value: 
-      objectReference: {fileID: 2512387470028804748}
     - target: {fileID: 7597388026322305200, guid: a6ddc6e6151517447ad925671d15420c,
         type: 3}
       propertyPath: m_LocalPosition.x

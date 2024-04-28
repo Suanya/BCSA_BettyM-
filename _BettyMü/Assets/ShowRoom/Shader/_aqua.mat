@@ -57,7 +57,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Smoothness: 0.8
-    - _Wave_Scale: 1
+    - _Wave_Scale: 0
     - _Wave_Speed: 0.2
     - _Wave_Strength: 0
     - _Wave_Tile: 1
