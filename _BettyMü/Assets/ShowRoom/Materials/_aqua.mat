@@ -46,10 +46,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Depth: -3.34
-    - _Foam_Distance: 0.5
-    - _Foam_Strength: 1
-    - _Foam_Tile: 2.7
+    - _Depth: 0.2
+    - _Foam_Distance: 0.2
+    - _Foam_Strength: 0.2
+    - _Foam_Tile: 0.2
     - _Fresnel: 1
     - _Normal_Speed: 1
     - _Normal_Strength: 1
