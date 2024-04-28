@@ -46,14 +46,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Depth: 0
+    - _Depth: 1
     - _Foam_Distance: 0.5
     - _Foam_Strength: 1
     - _Foam_Tile: 2.7
-    - _Fresnel: 0
+    - _Fresnel: 1
     - _Normal_Speed: 1
     - _Normal_Strength: 1
-    - _Normal_Tile: 0.4
+    - _Normal_Tile: 0.1
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Smoothness: 0.8
