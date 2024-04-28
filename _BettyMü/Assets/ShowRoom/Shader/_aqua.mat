@@ -46,7 +46,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Depth: 1
+    - _Depth: -3.34
     - _Foam_Distance: 0.5
     - _Foam_Strength: 1
     - _Foam_Tile: 2.7
@@ -62,7 +62,7 @@ Material:
     - _Wave_Strength: 0
     - _Wave_Tile: 1
     m_Colors:
-    - _Depth_Color: {r: 0.1129405, g: 0.8867924, b: 0.1925976, a: 0}
+    - _Depth_Color: {r: 0.29792634, g: 0.6026942, b: 0.6132076, a: 0}
     - _Vector2: {r: 0.02, g: 0.1, b: 0, a: 0}
     - _WaterA: {r: 0, g: 0.09811401, b: 1, a: 0}
     - _WaterB: {r: 0, g: 1, b: 0.91027117, a: 0.8666667}
