@@ -47,5 +47,5 @@ MonoBehaviour:
   objectToSpawn: {fileID: 1102009027026222523, guid: 6810323f0ba878b43b5b4b09bc53541c,
     type: 3}
   spawnAreaCenter: {x: 0, y: 0, z: 0}
-  spawnAreaSize: {x: 4, y: 0, z: 4}
-  spawnInterval: 0.5
+  spawnAreaSize: {x: 10, y: 1, z: 10}
+  spawnInterval: 4
