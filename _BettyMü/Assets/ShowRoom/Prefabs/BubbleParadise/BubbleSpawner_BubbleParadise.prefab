@@ -24,6 +24,16 @@ PrefabInstance:
       propertyPath: spawnInterval
       value: 0.4
       objectReference: {fileID: 0}
+    - target: {fileID: 8559722116609112316, guid: 623e5b2b270a4734789eb46871998b7b,
+        type: 3}
+      propertyPath: spawnAreaSize.x
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8559722116609112316, guid: 623e5b2b270a4734789eb46871998b7b,
+        type: 3}
+      propertyPath: spawnAreaSize.z
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 8899018407617003974, guid: 623e5b2b270a4734789eb46871998b7b,
         type: 3}
       propertyPath: m_LocalPosition.x
