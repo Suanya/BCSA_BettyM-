@@ -16,12 +16,6 @@ public class Tracker : MonoBehaviour
     private void Awake()
     {
         _manager = FindObjectOfType<ARTrackedImageManager>();
-
-        foreach(GameObject _trackedObject in _trackedPrefabs)
-        {
-            GameObject newARObject = Instantiate(_trackedObject, Vector3.zero, Quaternion.identity);            
-        }
-        
     }
 
     private void OnEnable()
