@@ -212,7 +212,7 @@ public class ARTemplateMenuManager : MonoBehaviour
     {
         m_ScreenSpaceController.dragCurrentPositionAction.action.started += HideTapOutsideUI;
         m_ScreenSpaceController.tapStartPositionAction.action.started += HideTapOutsideUI;
-        m_CreateButton.onClick.AddListener(ShowMenu);
+        // m_CreateButton.onClick.AddListener(ShowMenu);
         m_CancelButton.onClick.AddListener(HideMenu);
         m_DeleteButton.onClick.AddListener(DeleteFocusedObject);
         m_PlaneManager.planesChanged += OnPlaneChanged;
@@ -226,7 +226,7 @@ public class ARTemplateMenuManager : MonoBehaviour
         m_ShowObjectMenu = false;
         m_ScreenSpaceController.dragCurrentPositionAction.action.started -= HideTapOutsideUI;
         m_ScreenSpaceController.tapStartPositionAction.action.started -= HideTapOutsideUI;
-        m_CreateButton.onClick.RemoveListener(ShowMenu);
+        // m_CreateButton.onClick.RemoveListener(ShowMenu);
         m_CancelButton.onClick.RemoveListener(HideMenu);
         m_DeleteButton.onClick.RemoveListener(DeleteFocusedObject);
         m_PlaneManager.planesChanged -= OnPlaneChanged;
@@ -242,7 +242,7 @@ public class ARTemplateMenuManager : MonoBehaviour
         m_DebugMenu.gameObject.SetActive(true);
         m_InitializingDebugMenu = true;
 
-        InitializeDebugMenuOffsets();
+        // InitializeDebugMenuOffsets();
         HideMenu();
         m_PlaneManager.planePrefab = m_DebugPlane;
     }
@@ -274,7 +274,7 @@ public class ARTemplateMenuManager : MonoBehaviour
         else
         {
             m_IsPointerOverUI = false;
-            m_CreateButton.gameObject.SetActive(true);
+            // m_CreateButton.gameObject.SetActive(true);
             m_DeleteButton.gameObject.SetActive(m_InteractionGroup?.focusInteractable != null);
         }
 
@@ -422,7 +422,7 @@ public class ARTemplateMenuManager : MonoBehaviour
             Destroy(currentFocusedObject.transform.gameObject);
         }
     }
-
+    /*
     void InitializeDebugMenuOffsets()
     {
         if (m_CreateButton.TryGetComponent<RectTransform>(out var buttonRect))
@@ -435,7 +435,7 @@ public class ARTemplateMenuManager : MonoBehaviour
         else
             m_ObjectMenuOffset = new Vector2(0f, 345f);
     }
-
+    */
     void AdjustARDebugMenuPosition()
     {
         float screenWidthInInches = Screen.width / Screen.dpi;
