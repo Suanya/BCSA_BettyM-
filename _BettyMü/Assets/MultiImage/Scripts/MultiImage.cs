@@ -69,7 +69,11 @@ public class MultiImage : MonoBehaviour
             GameObject goARObject = arObjects[name];
             goARObject.SetActive(true);
             goARObject.transform.position = newPosition;
-            goARObject.transform.rotation = newRotation;
+
+            // Apply new rotation
+            Quaternion offsetRotation = Quaternion.Euler(0, 16, 0);
+            goARObject.transform.rotation = newRotation * offsetRotation;
+
             foreach (GameObject go in arObjects.Values)
             {
                 Debug.Log($"Go in arObjects.Values: {go.name}");
