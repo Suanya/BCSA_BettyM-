@@ -57,18 +57,19 @@ public class MultiImage : MonoBehaviour
     private void UpdateARImage(ARTrackedImage trackedImage)
     {
        // Assign and Place Game Object
-        AssignGameObject(trackedImage.referenceImage.name, trackedImage.transform.position);
+        AssignGameObject(trackedImage.referenceImage.name, trackedImage.transform.position, trackedImage.transform.rotation);
 
         Debug.Log($"trackedImage.referenceImage.name: {trackedImage.referenceImage.name}");
     }
 
-    void AssignGameObject(string name, Vector3 newPosition)
+    void AssignGameObject(string name, Vector3 newPosition, Quaternion newRotation)
     {
         if (arObjectsToPlace != null)
         {
             GameObject goARObject = arObjects[name];
             goARObject.SetActive(true);
             goARObject.transform.position = newPosition;
+            goARObject.transform.rotation = newRotation;
             foreach (GameObject go in arObjects.Values)
             {
                 Debug.Log($"Go in arObjects.Values: {go.name}");
