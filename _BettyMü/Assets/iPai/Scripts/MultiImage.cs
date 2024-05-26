@@ -6,8 +6,7 @@ using UnityEngine.XR.ARFoundation;
 [RequireComponent(typeof(ARTrackedImageManager))]
 public class MultiImage : MonoBehaviour
 { 
-    [SerializeField]
-    private GameObject[] arObjectsToPlace;
+    [SerializeField] private GameObject[] arObjectsToPlace;
 
     private ARTrackedImageManager m_TrackedImageManager;
 
@@ -56,9 +55,9 @@ public class MultiImage : MonoBehaviour
 
     private void UpdateARImage(ARTrackedImage trackedImage)
     {
-       // Assign and Place Game Object
+        // Assign and Place Game Object
         AssignGameObject(trackedImage.referenceImage.name, trackedImage.transform.position, trackedImage.transform.rotation);
-
+       
         Debug.Log($"trackedImage.referenceImage.name: {trackedImage.referenceImage.name}");
     }
 
