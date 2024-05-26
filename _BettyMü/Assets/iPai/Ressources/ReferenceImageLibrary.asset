@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848409ee8ba454f42a5ddff137688a27, type: 3}
+  m_Name: ReferenceImageLibrary
+  m_EditorClassIdentifier: 
+  m_GuidLow: 4916785731421332723
+  m_GuidHigh: 16878242769226321334
+  m_DataStore:
+    m_Storage: []
+  m_Images:
+  - m_SerializedGuid:
+      m_GuidLow: 5467904515693193425
+      m_GuidHigh: 6899255743675709072
+    m_SerializedTextureGuid:
+      m_GuidLow: 8406278335610792140
+      m_GuidHigh: 7018652071385797161
+    m_Size: {x: 0.4, y: 0.4}
+    m_SpecifySize: 1
+    m_Name: iPai_Pusteblume
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5679144776906674621
+      m_GuidHigh: 12974789878261913479
+    m_SerializedTextureGuid:
+      m_GuidLow: 11884351667828140254
+      m_GuidHigh: 2852658268252004424
+    m_Size: {x: 0.4, y: 0.4}
+    m_SpecifySize: 1
+    m_Name: iPai_CherryPop
+    m_Texture: {fileID: 0}
