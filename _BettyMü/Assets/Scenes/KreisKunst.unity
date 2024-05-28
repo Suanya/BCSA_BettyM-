@@ -1368,8 +1368,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arObjectsToPlace:
-  - {fileID: 8161872815780823140, guid: 5be6a1d6e07f1459c87d85849cf4cd7a, type: 3}
-  - {fileID: 1046964460092705498, guid: 3ef9e112323214ea7858cc6a3acafb5a, type: 3}
+  - {fileID: 6437441785816234609, guid: fca58aafef4884b4b81e6888f3d7983b, type: 3}
+  - {fileID: 1715058294242492896, guid: e87077ca198974a58a48f5677e1f5c2f, type: 3}
+  - {fileID: 910776643241979683, guid: 689e0eaf44f8a4aa8ab0e28d92f889f6, type: 3}
 --- !u!1 &1789462993
 GameObject:
   m_ObjectHideFlags: 0
