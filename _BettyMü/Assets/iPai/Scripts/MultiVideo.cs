@@ -1,31 +1,38 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
 using UnityEngine.XR.ARFoundation;
 
 [RequireComponent(typeof(ARTrackedImageManager))]
 
 public class MultiVideo : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject[] arObjectsToPlace;
-    [SerializeField]
-    private GameObject arVideoPrefab; // Reference to the AR video prefab
+    [SerializeField] private GameObject[] arObjectsToPlace;
 
     private ARTrackedImageManager m_TrackedImageManager;
     private Dictionary<string, GameObject> arObjects = new Dictionary<string, GameObject>();
-    private GameObject currentARVideo; // Reference to the currently active AR video GameObject
+    private Dictionary<string, VideoPlayer> arVideoPlayers = new Dictionary<string, VideoPlayer>();
 
     void Awake()
     {
         m_TrackedImageManager = GetComponent<ARTrackedImageManager>();
 
-        // Setup all game objects in dictionary
+        // setup all game objects in dictionary
         foreach (GameObject arObject in arObjectsToPlace)
         {
             GameObject newARObject = Instantiate(arObject, Vector3.zero, Quaternion.identity);
             newARObject.name = arObject.name;
             arObjects.Add(arObject.name, newARObject);
+
+            // Assuming each AR object has a VideoPlayer component
+            VideoPlayer videoPlayer = newARObject.GetComponent<VideoPlayer>();
+            if (videoPlayer != null)
+            {
+                arVideoPlayers.Add(arObject.name, videoPlayer);
+                videoPlayer.playOnAwake = false;
+            }
         }
     }
 
@@ -53,66 +60,63 @@ public class MultiVideo : MonoBehaviour
 
         foreach (ARTrackedImage trackedImage in eventArgs.removed)
         {
-            HideARVideo();
             arObjects[trackedImage.referenceImage.name].SetActive(false);
+            StopVideo(trackedImage.referenceImage.name);
         }
     }
 
     private void UpdateARImage(ARTrackedImage trackedImage)
     {
-        // Assign and Place Game Object
-        AssignGameObject(trackedImage.referenceImage.name, trackedImage.transform.position);
-
-        // If the tracked image is the round picture, show AR video
-        if (trackedImage.referenceImage.name == "RoundPicture")
-        {
-            ShowARVideo(trackedImage.transform.position, trackedImage.transform.rotation);
-        }
+        AssignGameObject(trackedImage.referenceImage.name, trackedImage.transform.position, trackedImage.transform.rotation);
+        Debug.Log($"trackedImage.referenceImage.name: {trackedImage.referenceImage.name}");
     }
 
-    void AssignGameObject(string name, Vector3 newPosition)
+    void AssignGameObject(string name, Vector3 newPosition, Quaternion newRotation)
     {
         if (arObjectsToPlace != null)
         {
             GameObject goARObject = arObjects[name];
             goARObject.SetActive(true);
             goARObject.transform.position = newPosition;
-            foreach (GameObject go in arObjects.Values)
+
+            // Apply new rotation
+            Quaternion offsetRotation = Quaternion.Euler(0, 16, 0);
+            goARObject.transform.rotation = newRotation * offsetRotation;
+
+            // Start the video for the current object
+            PlayVideo(name);
+        }
+    }
+
+    private async void PlayVideo(string name)
+    {
+        if (arVideoPlayers.ContainsKey(name))
+        {
+            var videoPlayer = arVideoPlayers[name];
+            if (!videoPlayer.isPlaying)
             {
-                if (go.name != name)
+                videoPlayer.Prepare();
+                while (!videoPlayer.isPrepared)
                 {
-                    go.SetActive(false);
+                    await Task.Yield(); // Wait until video is prepared
                 }
+                videoPlayer.Play();
             }
         }
     }
 
-    void ShowARVideo(Vector3 position, Quaternion rotation)
+    private void StopVideo(string name)
     {
-        // If an AR video is already active, destroy it
-        if (currentARVideo != null)
+        if (arVideoPlayers.ContainsKey(name))
         {
-            Destroy(currentARVideo);
-        }
-
-
-        // Calculate additional rotation adjustment to align the video with the tracked image
-        //Quaternion additionalRotation = Quaternion.Euler(90f, 0f, 0f); // Example adjustment, adjust as needed
-
-        // Apply the additional rotation adjustment to the provided rotation
-        //Quaternion finalRotation = rotation * additionalRotation;
-
-        // Instantiate and place the AR video prefab at the round picture's position and rotation
-        currentARVideo = Instantiate(arVideoPrefab, position, rotation);
-    }
-
-    void HideARVideo()
-    {
-        // If an AR video is active, destroy it
-        if (currentARVideo != null)
-        {
-            Destroy(currentARVideo);
-            currentARVideo = null;
+            var videoPlayer = arVideoPlayers[name];
+            if (videoPlayer.isPlaying)
+            {
+                videoPlayer.Stop();
+            }
         }
     }
 }
+
+
+
