@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6118535905396741703}
   - component: {fileID: 3346125197155342769}
   - component: {fileID: 8765355136371112467}
+  - component: {fileID: 8647989294620514368}
   m_Layer: 0
   m_Name: iPai_000Sound
   m_TagString: Untagged
@@ -142,9 +143,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 3
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -217,3 +218,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8647989294620514368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4772110633977891334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0091a6cf7b59473aa1f8b65f1644374, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  videoPlayer: {fileID: 3346125197155342769}
+  audioSource: {fileID: 8765355136371112467}

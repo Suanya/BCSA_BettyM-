@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2427179891676729038}
   - component: {fileID: 5154497019587898117}
   - component: {fileID: 1275807723854299675}
+  - component: {fileID: 177583171759403227}
   m_Layer: 0
   m_Name: iPai_CherryPopSound
   m_TagString: Untagged
@@ -142,9 +143,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 3
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -217,3 +218,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &177583171759403227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7213393961153494519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0091a6cf7b59473aa1f8b65f1644374, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  videoPlayer: {fileID: 5154497019587898117}
+  audioSource: {fileID: 1275807723854299675}
