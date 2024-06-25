@@ -1285,7 +1285,6 @@ GameObject:
   - component: {fileID: 1413058491}
   - component: {fileID: 1413058490}
   - component: {fileID: 1413058494}
-  - component: {fileID: 1413058495}
   m_Layer: 0
   m_Name: XR Origin (XR Rig)
   m_TagString: Untagged
@@ -1372,22 +1371,8 @@ MonoBehaviour:
   - {fileID: 6437441785816234609, guid: fca58aafef4884b4b81e6888f3d7983b, type: 3}
   - {fileID: 7213393961153494519, guid: 3663c2d21fc0e4dab9672b903619c227, type: 3}
   - {fileID: 910776643241979683, guid: 689e0eaf44f8a4aa8ab0e28d92f889f6, type: 3}
---- !u!114 &1413058495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1413058488}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17fe1acade7474dc7bb3b606ee22ca60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  arObjectsToPlace:
-  - {fileID: 6437441785816234609, guid: fca58aafef4884b4b81e6888f3d7983b, type: 3}
-  - {fileID: 1715058294242492896, guid: e87077ca198974a58a48f5677e1f5c2f, type: 3}
-  - {fileID: 910776643241979683, guid: 689e0eaf44f8a4aa8ab0e28d92f889f6, type: 3}
+  - {fileID: 4772110633977891334, guid: 5ea3f53b9888642f086bb35ac7e778b5, type: 3}
+  - {fileID: 5923342789848882089, guid: b0fb3f3fa229149208b82f4f14445424, type: 3}
 --- !u!1 &1789462993
 GameObject:
   m_ObjectHideFlags: 0
