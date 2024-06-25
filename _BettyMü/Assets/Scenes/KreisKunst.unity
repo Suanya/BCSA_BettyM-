@@ -1368,7 +1368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arObjectsToPlace:
-  - {fileID: 6437441785816234609, guid: fca58aafef4884b4b81e6888f3d7983b, type: 3}
+  - {fileID: 7268663276257818520, guid: 3324214ad1069494b82c57f7cd94acc4, type: 3}
   - {fileID: 7213393961153494519, guid: 3663c2d21fc0e4dab9672b903619c227, type: 3}
   - {fileID: 910776643241979683, guid: 689e0eaf44f8a4aa8ab0e28d92f889f6, type: 3}
   - {fileID: 4772110633977891334, guid: 5ea3f53b9888642f086bb35ac7e778b5, type: 3}
