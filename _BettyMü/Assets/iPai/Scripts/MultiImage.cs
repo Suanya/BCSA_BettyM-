@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
+using UnityEngine.Video;
 
 [RequireComponent(typeof(ARTrackedImageManager))]
 public class MultiImage : MonoBehaviour
@@ -9,7 +9,6 @@ public class MultiImage : MonoBehaviour
     [SerializeField] private GameObject[] arObjectsToPlace;
 
     private ARTrackedImageManager m_TrackedImageManager;
-
     private Dictionary<string, GameObject> arObjects = new Dictionary<string, GameObject>();
 
     void Awake()
@@ -21,6 +20,7 @@ public class MultiImage : MonoBehaviour
         {
             GameObject newARObject = Instantiate(arObject, Vector3.zero, Quaternion.identity);
             newARObject.name = arObject.name;
+            newARObject.SetActive(false);
             arObjects.Add(arObject.name, newARObject);
         }
     }
@@ -49,7 +49,15 @@ public class MultiImage : MonoBehaviour
 
         foreach (ARTrackedImage trackedImage in eventArgs.removed)
         {
-            arObjects[trackedImage.name].SetActive(false);
+            if (arObjects.TryGetValue(trackedImage.referenceImage.name, out GameObject arObject))
+            {
+                var videoPlayer = arObject.GetComponent<VideoPlayer>();
+                if (videoPlayer != null)
+                {
+                    videoPlayer.Stop();
+                }
+                arObject.SetActive(false);
+            }
         }
     }
 
@@ -57,28 +65,38 @@ public class MultiImage : MonoBehaviour
     {
         // Assign and Place Game Object
         AssignGameObject(trackedImage.referenceImage.name, trackedImage.transform.position, trackedImage.transform.rotation);
-       
         Debug.Log($"trackedImage.referenceImage.name: {trackedImage.referenceImage.name}");
     }
 
     void AssignGameObject(string name, Vector3 newPosition, Quaternion newRotation)
     {
-        if (arObjectsToPlace != null)
+        if (arObjects.TryGetValue(name, out GameObject goARObject))
         {
-            GameObject goARObject = arObjects[name];
             goARObject.SetActive(true);
             goARObject.transform.position = newPosition;
+            goARObject.transform.rotation = newRotation;
 
-            // Apply new rotation
-            Quaternion offsetRotation = Quaternion.Euler(0, 16, 0);
-            goARObject.transform.rotation = newRotation * offsetRotation;
-
-            foreach (GameObject go in arObjects.Values)
+            // Ensure only one video plays at a time
+            foreach (var arObject in arObjects.Values)
             {
-                Debug.Log($"Go in arObjects.Values: {go.name}");
-                if (go.name != name)
+                var videoPlayer = arObject.GetComponent<VideoPlayer>();
+                if (videoPlayer != null)
                 {
-                    go.SetActive(false);
+                    if (arObject.name == name)
+                    {
+                        if (!videoPlayer.isPlaying)
+                        {
+                            videoPlayer.Play();
+                        }
+                    }
+                    else
+                    {
+                        if (videoPlayer.isPlaying)
+                        {
+                            videoPlayer.Stop();
+                        }
+                        arObject.SetActive(false);
+                    }
                 }
             }
         }
