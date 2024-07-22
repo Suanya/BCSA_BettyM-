@@ -15,7 +15,7 @@ public class MultiImage : MonoBehaviour
     {
         m_TrackedImageManager = GetComponent<ARTrackedImageManager>();
 
-        // setup all game objects in dictionary
+        // Setup all game objects in the dictionary
         foreach (GameObject arObject in arObjectsToPlace)
         {
             GameObject newARObject = Instantiate(arObject, Vector3.zero, Quaternion.identity);
@@ -83,7 +83,7 @@ public class MultiImage : MonoBehaviour
 
     private void UpdateARImage(ARTrackedImage trackedImage)
     {
-        // Assign and Place Game Object
+        // Assign and place the game object
         AssignGameObject(trackedImage.referenceImage.name, trackedImage.transform.position, trackedImage.transform.rotation);
         Debug.Log($"trackedImage.referenceImage.name: {trackedImage.referenceImage.name}");
     }
