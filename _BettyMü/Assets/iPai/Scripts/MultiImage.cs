@@ -22,6 +22,21 @@ public class MultiImage : MonoBehaviour
             newARObject.name = arObject.name;
             newARObject.SetActive(false);
             arObjects.Add(arObject.name, newARObject);
+
+            // Ensure VideoPlayer and AudioSource are set up
+            var videoPlayer = newARObject.GetComponent<VideoPlayer>();
+            if (videoPlayer != null)
+            {
+                videoPlayer.playOnAwake = false;
+
+                var audioSource = newARObject.GetComponent<AudioSource>();
+                if (audioSource == null)
+                {
+                    audioSource = newARObject.AddComponent<AudioSource>();
+                }
+                videoPlayer.audioOutputMode = VideoAudioOutputMode.AudioSource;
+                videoPlayer.SetTargetAudioSource(0, audioSource);
+            }
         }
     }
 
@@ -52,9 +67,14 @@ public class MultiImage : MonoBehaviour
             if (arObjects.TryGetValue(trackedImage.referenceImage.name, out GameObject arObject))
             {
                 var videoPlayer = arObject.GetComponent<VideoPlayer>();
+                var audioSource = arObject.GetComponent<AudioSource>();
                 if (videoPlayer != null)
                 {
                     videoPlayer.Stop();
+                }
+                if (audioSource != null)
+                {
+                    audioSource.Stop();
                 }
                 arObject.SetActive(false);
             }
@@ -80,6 +100,7 @@ public class MultiImage : MonoBehaviour
             foreach (var arObject in arObjects.Values)
             {
                 var videoPlayer = arObject.GetComponent<VideoPlayer>();
+                var audioSource = arObject.GetComponent<AudioSource>();
                 if (videoPlayer != null)
                 {
                     if (arObject.name == name)
@@ -87,6 +108,10 @@ public class MultiImage : MonoBehaviour
                         if (!videoPlayer.isPlaying)
                         {
                             videoPlayer.Play();
+                            if (audioSource != null)
+                            {
+                                audioSource.Play();
+                            }
                         }
                     }
                     else
@@ -94,6 +119,10 @@ public class MultiImage : MonoBehaviour
                         if (videoPlayer.isPlaying)
                         {
                             videoPlayer.Stop();
+                            if (audioSource != null)
+                            {
+                                audioSource.Stop();
+                            }
                         }
                         arObject.SetActive(false);
                     }
