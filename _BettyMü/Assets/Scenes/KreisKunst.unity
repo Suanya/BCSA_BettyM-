@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028373, g: 0.22571398, b: 0.30692294, a: 1}
+  m_IndirectSpecularColor: {r: 0.18025167, g: 0.22567049, b: 0.30687964, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1367,7 +1367,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6885f0f7acadf4aa38f53cc148fa30db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arObjectPoolNames: []
+  arObjectPoolNames:
+  - iPai_000Sound
+  - iPai_12Sound
+  - iPai_51TreeDreamSound
+  - iPai_65Sound
+  - iPai_CherryPopSound
+  - iPai_FederFlowerSound
+  - iPai_PusteBlumeSound
 --- !u!1 &1789462993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2118,29 +2125,29 @@ MonoBehaviour:
   - name: iPai_000Sound
     prefab: {fileID: 4772110633977891334, guid: 5ea3f53b9888642f086bb35ac7e778b5,
       type: 3}
-    size: 0
+    size: 7
   - name: iPai_12Sound
     prefab: {fileID: 5923342789848882089, guid: b0fb3f3fa229149208b82f4f14445424,
       type: 3}
-    size: 0
+    size: 7
   - name: iPai_51TreeDreamSound
     prefab: {fileID: 5771054190628232052, guid: e32501531eb004ecfbb38b3065903544,
       type: 3}
-    size: 0
+    size: 7
   - name: iPai_65Sound
     prefab: {fileID: 635003877841446857, guid: eed8e3fbfaf3947e2b9d6a5be9272837, type: 3}
-    size: 0
+    size: 7
   - name: iPai_CherryPopSound
     prefab: {fileID: 7213393961153494519, guid: 3663c2d21fc0e4dab9672b903619c227,
       type: 3}
-    size: 0
+    size: 7
   - name: iPai_FederFlowerSound
     prefab: {fileID: 488202148420316646, guid: d7358202e177a4beeb71f055acc2d481, type: 3}
-    size: 0
+    size: 7
   - name: iPai_PusteBlumeSound
     prefab: {fileID: 7268663276257818520, guid: 3324214ad1069494b82c57f7cd94acc4,
       type: 3}
-    size: 0
+    size: 7
 --- !u!4 &2170511382967219308
 Transform:
   m_ObjectHideFlags: 0
