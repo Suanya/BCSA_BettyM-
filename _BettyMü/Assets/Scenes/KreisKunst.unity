@@ -779,6 +779,50 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 0}
   m_ButtonPressPoint: 0.5
+--- !u!1 &401327186
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 401327188}
+  - component: {fileID: 401327187}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &401327187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401327186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 749f702a9280f4b82aa24f7ce23fbf62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &401327188
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401327186}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.0010200001, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &510482224
 GameObject:
   m_ObjectHideFlags: 0
@@ -1306,7 +1350,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SerializedLibrary: {fileID: 11400000, guid: 335a3f10d126944e4b99f512ac6cd332,
     type: 2}
-  m_MaxNumberOfMovingImages: 2
+  m_MaxNumberOfMovingImages: 7
   m_TrackedImagePrefab: {fileID: 0}
 --- !u!114 &1413058491
 MonoBehaviour:
@@ -2125,29 +2169,29 @@ MonoBehaviour:
   - name: iPai_000Sound
     prefab: {fileID: 4772110633977891334, guid: 5ea3f53b9888642f086bb35ac7e778b5,
       type: 3}
-    size: 7
+    size: 9
   - name: iPai_12Sound
     prefab: {fileID: 5923342789848882089, guid: b0fb3f3fa229149208b82f4f14445424,
       type: 3}
-    size: 7
+    size: 9
   - name: iPai_51TreeDreamSound
     prefab: {fileID: 5771054190628232052, guid: e32501531eb004ecfbb38b3065903544,
       type: 3}
-    size: 7
+    size: 9
   - name: iPai_65Sound
     prefab: {fileID: 635003877841446857, guid: eed8e3fbfaf3947e2b9d6a5be9272837, type: 3}
-    size: 7
+    size: 9
   - name: iPai_CherryPopSound
     prefab: {fileID: 7213393961153494519, guid: 3663c2d21fc0e4dab9672b903619c227,
       type: 3}
-    size: 7
+    size: 9
   - name: iPai_FederFlowerSound
     prefab: {fileID: 488202148420316646, guid: d7358202e177a4beeb71f055acc2d481, type: 3}
-    size: 7
+    size: 9
   - name: iPai_PusteBlumeSound
     prefab: {fileID: 7268663276257818520, guid: 3324214ad1069494b82c57f7cd94acc4,
       type: 3}
-    size: 7
+    size: 9
 --- !u!4 &2170511382967219308
 Transform:
   m_ObjectHideFlags: 0
@@ -2372,3 +2416,4 @@ SceneRoots:
   - {fileID: 1413058493}
   - {fileID: 2170511382967219308}
   - {fileID: 1990953537}
+  - {fileID: 401327188}

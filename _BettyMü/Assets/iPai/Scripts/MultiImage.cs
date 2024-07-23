@@ -57,11 +57,15 @@ public class MultiImage : MonoBehaviour
 
         if (arObject != null)
         {
+            // Update the position and rotation to keep the AR object anchored
             arObject.transform.position = trackedImage.transform.position;
             arObject.transform.rotation = trackedImage.transform.rotation;
             arObject.SetActive(true);
 
-            PlayVideoAndAudio(arObject);
+            if (!IsVideoPlaying(arObject))
+            {
+                PlayVideoAndAudio(arObject);
+            }
         }
     }
 
@@ -130,5 +134,11 @@ public class MultiImage : MonoBehaviour
             videoPlayer.playOnAwake = false;
             videoPlayer.audioOutputMode = VideoAudioOutputMode.Direct;
         }
+    }
+
+    private bool IsVideoPlaying(GameObject arObject)
+    {
+        var videoPlayer = arObject.GetComponent<VideoPlayer>();
+        return videoPlayer != null && videoPlayer.isPlaying;
     }
 }
