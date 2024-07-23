@@ -97,9 +97,19 @@ public class MultiImage : MonoBehaviour
     private void PlayVideoAndAudio(GameObject arObject)
     {
         var videoPlayer = arObject.GetComponent<VideoPlayer>();
-        if (videoPlayer != null && !videoPlayer.isPlaying)
+        if (videoPlayer != null)
         {
-            AudioManager.Instance.PlayVideo(videoPlayer);
+            if (!videoPlayer.isPrepared)
+            {
+                videoPlayer.Prepare();
+                videoPlayer.prepareCompleted += (VideoPlayer source) => {
+                    AudioManager.Instance.PlayVideo(videoPlayer);
+                };
+            }
+            else
+            {
+                AudioManager.Instance.PlayVideo(videoPlayer);
+            }
         }
     }
 
