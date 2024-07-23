@@ -5,6 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - RoundPicture
+  - iPai_000Sound
+  - iPai_12Sound
+  - iPai_65Sound
+  - iPai_CherryPopSound
+  - iPai_FederFlowerSound
+  - iPai_PusteBlumeSound
+  - iPai_51TreeDreamSound
   layers:
   - Default
   - TransparentFX

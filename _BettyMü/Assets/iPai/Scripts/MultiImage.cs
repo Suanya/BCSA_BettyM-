@@ -6,7 +6,7 @@ using UnityEngine.Video;
 [RequireComponent(typeof(ARTrackedImageManager))]
 public class MultiImage : MonoBehaviour
 {
-    [SerializeField] private GameObject[] arObjectsToPlace;
+    [SerializeField] private string[] arObjectPoolNames; // Names of the pools to use
 
     private ARTrackedImageManager m_TrackedImageManager;
     private Dictionary<string, GameObject> arObjects = new Dictionary<string, GameObject>();
@@ -15,24 +15,10 @@ public class MultiImage : MonoBehaviour
     {
         m_TrackedImageManager = GetComponent<ARTrackedImageManager>();
 
-        // Setup all game objects in the dictionary
-        foreach (GameObject arObject in arObjectsToPlace)
+        // Initialize the dictionary with pool names
+        foreach (string poolName in arObjectPoolNames)
         {
-            if (arObject == null) continue;
-
-            if (!arObjects.ContainsKey(arObject.name))
-            {
-                GameObject newARObject = Instantiate(arObject, Vector3.zero, Quaternion.identity);
-                newARObject.name = arObject.name;
-                newARObject.SetActive(false);
-                arObjects.Add(arObject.name, newARObject);
-
-                SetupVideoPlayer(newARObject);
-            }
-            else
-            {
-                Debug.LogWarning($"Duplicate AR object name found: {arObject.name}");
-            }
+            arObjects.Add(poolName, null); // Initialize with null to be replaced by pooled objects
         }
     }
 
@@ -66,60 +52,68 @@ public class MultiImage : MonoBehaviour
 
     private void UpdateARImage(ARTrackedImage trackedImage)
     {
-        AssignGameObject(trackedImage.referenceImage.name, trackedImage.transform.position, trackedImage.transform.rotation);
+        string name = trackedImage.referenceImage.name;
+        GameObject arObject = GetOrCreateGameObject(name);
+
+        if (arObject != null)
+        {
+            // Update the position and rotation to keep the AR object anchored
+            arObject.transform.position = trackedImage.transform.position;
+            arObject.transform.rotation = trackedImage.transform.rotation;
+            arObject.SetActive(true);
+
+            if (!IsVideoPlaying(arObject))
+            {
+                PlayVideoAndAudio(arObject);
+            }
+        }
     }
 
     private void HandleRemovedImage(ARTrackedImage trackedImage)
     {
-        if (arObjects.TryGetValue(trackedImage.referenceImage.name, out GameObject arObject))
+        string name = trackedImage.referenceImage.name;
+
+        if (arObjects.TryGetValue(name, out GameObject arObject) && arObject != null)
         {
-            var videoPlayer = arObject.GetComponent<VideoPlayer>();
-            var audioSource = arObject.GetComponent<AudioSource>();
-
-            if (videoPlayer != null)
-            {
-                videoPlayer.Stop();
-            }
-
-            if (audioSource != null)
-            {
-                audioSource.Stop();
-            }
-
-            arObject.SetActive(false);
+            StopVideoAndAudio(arObject);
+            PoolManager.Instance.ReturnObject(name, arObject);
+            arObjects[name] = null; // Set to null so a new object can be fetched next time
         }
     }
 
-    private void AssignGameObject(string name, Vector3 newPosition, Quaternion newRotation)
+    private GameObject GetOrCreateGameObject(string name)
     {
-        foreach (var kvp in arObjects)
+        if (arObjects.TryGetValue(name, out GameObject arObject) && arObject != null)
         {
-            var arObject = kvp.Value;
-            bool isActive = kvp.Key == name;
-
-            arObject.SetActive(isActive);
-
-            if (isActive)
-            {
-                arObject.transform.position = newPosition;
-                arObject.transform.rotation = newRotation;
-                PlayVideoAndAudio(arObject);
-            }
-            else
-            {
-                StopVideoAndAudio(arObject);
-            }
+            return arObject;
         }
+
+        arObject = PoolManager.Instance.GetObject(name);
+        if (arObject != null)
+        {
+            arObjects[name] = arObject;
+            SetupVideoPlayer(arObject);
+        }
+
+        return arObject;
     }
 
     private void PlayVideoAndAudio(GameObject arObject)
     {
         var videoPlayer = arObject.GetComponent<VideoPlayer>();
-        if (videoPlayer != null && !videoPlayer.isPlaying)
+        if (videoPlayer != null)
         {
-            videoPlayer.Play();
-            var audioSource = arObject.GetComponent<AudioSource>();
-            audioSource?.Play();
+            if (!videoPlayer.isPrepared)
+            {
+                videoPlayer.Prepare();
+                videoPlayer.prepareCompleted += (VideoPlayer source) => {
+                    AudioManager.Instance.PlayVideo(videoPlayer);
+                };
+            }
+            else
+            {
+                AudioManager.Instance.PlayVideo(videoPlayer);
+            }
         }
     }
 
@@ -128,9 +122,7 @@ public class MultiImage : MonoBehaviour
         var videoPlayer = arObject.GetComponent<VideoPlayer>();
         if (videoPlayer != null && videoPlayer.isPlaying)
         {
-            videoPlayer.Stop();
-            var audioSource = arObject.GetComponent<AudioSource>();
-            audioSource?.Stop();
+            AudioManager.Instance.StopVideo(videoPlayer);
         }
     }
 
@@ -140,15 +132,13 @@ public class MultiImage : MonoBehaviour
         if (videoPlayer != null)
         {
             videoPlayer.playOnAwake = false;
-
-            var audioSource = arObject.GetComponent<AudioSource>();
-            if (audioSource == null)
-            {
-                audioSource = arObject.AddComponent<AudioSource>();
-            }
-
-            videoPlayer.audioOutputMode = VideoAudioOutputMode.AudioSource;
-            videoPlayer.SetTargetAudioSource(0, audioSource);
+            videoPlayer.audioOutputMode = VideoAudioOutputMode.Direct;
         }
+    }
+
+    private bool IsVideoPlaying(GameObject arObject)
+    {
+        var videoPlayer = arObject.GetComponent<VideoPlayer>();
+        return videoPlayer != null && videoPlayer.isPlaying;
     }
 }

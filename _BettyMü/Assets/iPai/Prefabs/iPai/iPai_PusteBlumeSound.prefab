@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4466793736957864100}
   m_Layer: 0
   m_Name: iPai_PusteBlumeSound
-  m_TagString: Untagged
+  m_TagString: iPai_PusteBlume
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
