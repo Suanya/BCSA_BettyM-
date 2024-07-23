@@ -99,9 +99,7 @@ public class MultiImage : MonoBehaviour
         var videoPlayer = arObject.GetComponent<VideoPlayer>();
         if (videoPlayer != null && !videoPlayer.isPlaying)
         {
-            videoPlayer.Play();
-            var audioSource = arObject.GetComponent<AudioSource>();
-            audioSource?.Play();
+            AudioManager.Instance.PlayVideo(videoPlayer);
         }
     }
 
@@ -110,9 +108,7 @@ public class MultiImage : MonoBehaviour
         var videoPlayer = arObject.GetComponent<VideoPlayer>();
         if (videoPlayer != null && videoPlayer.isPlaying)
         {
-            videoPlayer.Stop();
-            var audioSource = arObject.GetComponent<AudioSource>();
-            audioSource?.Stop();
+            AudioManager.Instance.StopVideo(videoPlayer);
         }
     }
 
@@ -122,15 +118,7 @@ public class MultiImage : MonoBehaviour
         if (videoPlayer != null)
         {
             videoPlayer.playOnAwake = false;
-
-            var audioSource = arObject.GetComponent<AudioSource>();
-            if (audioSource == null)
-            {
-                audioSource = arObject.AddComponent<AudioSource>();
-            }
-
-            videoPlayer.audioOutputMode = VideoAudioOutputMode.AudioSource;
-            videoPlayer.SetTargetAudioSource(0, audioSource);
+            videoPlayer.audioOutputMode = VideoAudioOutputMode.Direct;
         }
     }
 }
