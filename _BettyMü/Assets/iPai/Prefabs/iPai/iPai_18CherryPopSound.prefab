@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1275807723854299675}
   - component: {fileID: 177583171759403227}
   m_Layer: 0
-  m_Name: iPai_CherryPopSound
+  m_Name: iPai_18CherryPopSound
   m_TagString: iPai_CherryPop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
