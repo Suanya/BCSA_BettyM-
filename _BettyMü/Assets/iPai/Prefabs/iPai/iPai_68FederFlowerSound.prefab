@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7268663276257818520
+--- !u!1 &488202148420316646
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,26 +8,26 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9188281678889374666}
-  - component: {fileID: 4718576314472056168}
-  - component: {fileID: 605657191126096068}
-  - component: {fileID: 4278057886155518589}
-  - component: {fileID: 998023225404990674}
-  - component: {fileID: 4466793736957864100}
+  - component: {fileID: 5527417793810842646}
+  - component: {fileID: 1782806062536741255}
+  - component: {fileID: 7642760220292121805}
+  - component: {fileID: 1716369321139755481}
+  - component: {fileID: 2871184298329530162}
+  - component: {fileID: 2554107239972614566}
   m_Layer: 0
-  m_Name: iPai_PusteBlumeSound
-  m_TagString: iPai_PusteBlume
+  m_Name: iPai_68FederFlowerSound
+  m_TagString: iPai_FederFlower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &9188281678889374666
+--- !u!4 &5527417793810842646
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7268663276257818520}
+  m_GameObject: {fileID: 488202148420316646}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5691056, y: 0.5691056, z: -0.41966516, w: 0.41966516}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -36,21 +36,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 107.189, y: 0, z: -90}
---- !u!33 &4718576314472056168
+--- !u!33 &1782806062536741255
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7268663276257818520}
+  m_GameObject: {fileID: 488202148420316646}
   m_Mesh: {fileID: -2124705421725058983, guid: 9fda436f9825a420db597d3fbfa6cd04, type: 3}
---- !u!23 &605657191126096068
+--- !u!23 &7642760220292121805
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7268663276257818520}
+  m_GameObject: {fileID: 488202148420316646}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -86,15 +86,15 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!328 &4278057886155518589
+--- !u!328 &1716369321139755481
 VideoPlayer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7268663276257818520}
+  m_GameObject: {fileID: 488202148420316646}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 358e7898e9d5f4ab6a20491e68cc201c, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 69d688822dcdc4efd92a0fe22b32a791, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -122,13 +122,13 @@ VideoPlayer:
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
   m_VideoShaders: []
---- !u!82 &998023225404990674
+--- !u!82 &2871184298329530162
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7268663276257818520}
+  m_GameObject: {fileID: 488202148420316646}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -218,17 +218,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &4466793736957864100
+--- !u!114 &2554107239972614566
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7268663276257818520}
+  m_GameObject: {fileID: 488202148420316646}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e0091a6cf7b59473aa1f8b65f1644374, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  videoPlayer: {fileID: 4278057886155518589}
-  audioSource: {fileID: 998023225404990674}
+  videoPlayer: {fileID: 1716369321139755481}
+  audioSource: {fileID: 2871184298329530162}

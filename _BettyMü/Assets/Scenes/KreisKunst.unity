@@ -2181,14 +2181,14 @@ MonoBehaviour:
   - name: iPai_65Sound
     prefab: {fileID: 635003877841446857, guid: eed8e3fbfaf3947e2b9d6a5be9272837, type: 3}
     size: 9
-  - name: iPai_CherryPopSound
+  - name: iPai_18CherryPopSound
     prefab: {fileID: 7213393961153494519, guid: 3663c2d21fc0e4dab9672b903619c227,
       type: 3}
     size: 9
-  - name: iPai_FederFlowerSound
+  - name: iPai_68FederFlowerSound
     prefab: {fileID: 488202148420316646, guid: d7358202e177a4beeb71f055acc2d481, type: 3}
     size: 9
-  - name: iPai_PusteBlumeSound
+  - name: iPai_17PusteBlumeSound
     prefab: {fileID: 7268663276257818520, guid: 3324214ad1069494b82c57f7cd94acc4,
       type: 3}
     size: 9
