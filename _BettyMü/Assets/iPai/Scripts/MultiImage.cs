@@ -7,9 +7,11 @@ using UnityEngine.Video;
 public class MultiImage : MonoBehaviour
 {
     [SerializeField] private string[] arObjectPoolNames;
+    [SerializeField] private int maxTrackedImages = 3; // Limit the number of tracked images
 
     private ARTrackedImageManager m_TrackedImageManager;
     private Dictionary<string, GameObject> arObjects = new Dictionary<string, GameObject>();
+    private List<ARTrackedImage> activeTrackedImages = new List<ARTrackedImage>();
 
     void Awake()
     {
@@ -33,18 +35,32 @@ public class MultiImage : MonoBehaviour
 
     void OnTrackedImagesChanged(ARTrackedImagesChangedEventArgs eventArgs)
     {
+        // Add new images to the list
         foreach (ARTrackedImage trackedImage in eventArgs.added)
         {
+            if (activeTrackedImages.Count >= maxTrackedImages)
+            {
+                RemoveOldestTrackedImage();
+            }
+
+            activeTrackedImages.Add(trackedImage);
             UpdateARImage(trackedImage);
         }
 
+        // Update existing images
         foreach (ARTrackedImage trackedImage in eventArgs.updated)
         {
+            if (!activeTrackedImages.Contains(trackedImage))
+            {
+                activeTrackedImages.Add(trackedImage);
+            }
             UpdateARImage(trackedImage);
         }
 
+        // Remove images that are no longer tracked
         foreach (ARTrackedImage trackedImage in eventArgs.removed)
         {
+            activeTrackedImages.Remove(trackedImage);
             HandleRemovedImage(trackedImage);
         }
     }
@@ -107,5 +123,16 @@ public class MultiImage : MonoBehaviour
 
         Debug.LogError($"No pool exists with the name: {name}");
         return null;
+    }
+
+    private void RemoveOldestTrackedImage()
+    {
+        if (activeTrackedImages.Count > 0)
+        {
+            // Find the oldest image to remove
+            ARTrackedImage oldestImage = activeTrackedImages[0];
+            HandleRemovedImage(oldestImage);
+            activeTrackedImages.RemoveAt(0);
+        }
     }
 }
