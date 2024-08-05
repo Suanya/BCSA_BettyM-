@@ -80,6 +80,7 @@ public class MultiImage : MonoBehaviour
                 if (videoPlayer != null && videoPlayer.isPlaying)
                 {
                     videoPlayer.Stop();
+                    videoPlayer.clip = null; // Release video clip
                 }
                 arObject.SetActive(false);
                 PoolManager.Instance.ReturnObject(name, arObject);

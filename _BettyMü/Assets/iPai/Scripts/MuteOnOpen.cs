@@ -24,19 +24,11 @@ public class MuteOnOpen : MonoBehaviour
         {
             audioSource.Stop();
         }
-        else
-        {
-            Debug.LogWarning("AudioSource component not found on the GameObject.");
-        }
 
         if (videoPlayer != null)
         {
             videoPlayer.playOnAwake = false;
             videoPlayer.SetDirectAudioMute(0, true);
-        }
-        else
-        {
-            Debug.LogWarning("VideoPlayer component not found on the GameObject.");
         }
     }
 
@@ -64,6 +56,7 @@ public class MuteOnOpen : MonoBehaviour
         if (videoPlayer != null && videoPlayer.isPlaying)
         {
             videoPlayer.Stop();
+            videoPlayer.clip = null; // Release video clip
         }
     }
 }

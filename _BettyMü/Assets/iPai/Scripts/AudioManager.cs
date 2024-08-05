@@ -35,6 +35,7 @@ public class AudioManager : MonoBehaviour
         if (currentlyPlayingVideo == videoToStop && videoToStop.isPlaying)
         {
             videoToStop.Stop();
+            currentlyPlayingVideo.clip = null; // Release video clip
             currentlyPlayingVideo = null;
         }
     }
