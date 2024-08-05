@@ -20,13 +20,11 @@ public class AudioManager : MonoBehaviour
 
     public void PlayVideo(VideoPlayer newVideo)
     {
-        // If there is already a video playing, stop its audio track
         if (currentlyPlayingVideo != null && currentlyPlayingVideo.isPlaying)
         {
             currentlyPlayingVideo.SetDirectAudioMute(0, true);
         }
 
-        // Play the new video and ensure its audio is unmuted
         currentlyPlayingVideo = newVideo;
         currentlyPlayingVideo.SetDirectAudioMute(0, false);
         currentlyPlayingVideo.Play();
