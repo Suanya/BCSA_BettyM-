@@ -61,47 +61,51 @@ public class MultiImage : MonoBehaviour
             arObject.SetActive(true);
 
             VideoPlayer videoPlayer = arObject.GetComponent<VideoPlayer>();
-            if (videoPlayer != null && !videoPlayer.isPlaying)
+            if (videoPlayer != null)
             {
-                videoPlayer.Play();
+                AudioManager.Instance.RegisterVideoPlayer(videoPlayer);
+                AudioManager.Instance.PlayVideo(videoPlayer);
             }
+            else
+            {
+                Debug.LogWarning("No VideoPlayer found on the GameObject.");
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"No AR object found for {name}.");
         }
     }
 
     private void HandleRemovedImage(ARTrackedImage trackedImage)
     {
         string name = trackedImage.referenceImage.name;
-        if (arObjects.ContainsKey(name))
+        if (arObjects.TryGetValue(name, out GameObject arObject) && arObject != null)
         {
-            GameObject arObject = arObjects[name];
-            if (arObject != null)
+            VideoPlayer videoPlayer = arObject.GetComponent<VideoPlayer>();
+            if (videoPlayer != null)
             {
-                VideoPlayer videoPlayer = arObject.GetComponent<VideoPlayer>();
-                if (videoPlayer != null && videoPlayer.isPlaying)
-                {
-                    videoPlayer.Stop();
-                    videoPlayer.clip = null; // Release video clip
-                }
-                arObject.SetActive(false);
-                PoolManager.Instance.ReturnObject(name, arObject);
-                arObjects[name] = null;
+                AudioManager.Instance.UnregisterVideoPlayer(videoPlayer);
+                AudioManager.Instance.StopVideo(videoPlayer);
             }
+            arObject.SetActive(false);
+            PoolManager.Instance.ReturnObject(name, arObject);
+            arObjects[name] = null;
         }
     }
 
     private GameObject GetOrCreateGameObject(string name)
     {
-        if (!arObjects.ContainsKey(name))
+        if (arObjects.ContainsKey(name))
         {
-            Debug.LogError($"No pool exists with the name: {name}");
-            return null;
+            if (arObjects[name] == null)
+            {
+                arObjects[name] = PoolManager.Instance.GetObject(name);
+            }
+            return arObjects[name];
         }
 
-        if (arObjects[name] == null)
-        {
-            arObjects[name] = PoolManager.Instance.GetObject(name);
-        }
-
-        return arObjects[name];
+        Debug.LogError($"No pool exists with the name: {name}");
+        return null;
     }
 }
