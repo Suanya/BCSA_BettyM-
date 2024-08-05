@@ -57,7 +57,7 @@ public class PoolManager : MonoBehaviour
             return objectToReuse;
         }
 
-        Debug.LogWarning("Pool with name " + poolName + " doesn't exist.");
+        Debug.LogWarning($"Pool with name {poolName} doesn't exist.");
         return null;
     }
 
@@ -70,7 +70,7 @@ public class PoolManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Pool with name " + poolName + " doesn't exist.");
+            Debug.LogWarning($"Pool with name {poolName} doesn't exist.");
         }
     }
 }

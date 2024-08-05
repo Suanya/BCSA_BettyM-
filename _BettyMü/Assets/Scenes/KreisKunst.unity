@@ -1416,9 +1416,9 @@ MonoBehaviour:
   - iPai_12Sound
   - iPai_51TreeDreamSound
   - iPai_65Sound
-  - iPai_CherryPopSound
-  - iPai_FederFlowerSound
-  - iPai_PusteBlumeSound
+  - iPai_18CherryPopSound
+  - iPai_68FederFlowerSound
+  - iPai_17PusteBlumeSound
 --- !u!1 &1789462993
 GameObject:
   m_ObjectHideFlags: 0
